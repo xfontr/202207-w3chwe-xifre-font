@@ -3,9 +3,9 @@ export interface Pokemon {
   url: string;
 }
 
-export interface PokemonList {
+export type PokemonList = {
   count: number;
   next: string;
   previous: string;
-  results: [Pokemon];
-}
+  results: Array<Pokemon>;
+};
