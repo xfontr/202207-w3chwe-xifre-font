@@ -13,7 +13,7 @@ const apiData = {
 };
 class PokemonList extends Component implements IPokeList {
   pokeList: CurrentPokeList;
-
+  count = 1154;
   currentPage = 0;
 
   constructor(parent: HTMLElement) {
@@ -95,8 +95,13 @@ class PokemonList extends Component implements IPokeList {
       apiData.offset = `offset=${offset}`;
 
       const response = await fetch(apiData.url());
-      const { results }: { results: Promise<Array<any>> } =
+      const {
+        results,
+        count,
+      }: { results: Promise<Array<any>>; count: number } =
         await response.json();
+
+      this.count = await count;
 
       return getEachPokemon(results);
     };
@@ -106,6 +111,7 @@ class PokemonList extends Component implements IPokeList {
 
   render(): void {
     const html = `
+    <span class="pokemon-list__count">${this.currentPage}/${this.count}<span>
     <ul class="card-list">
     </ul>
     <div class="card-list__pagination">

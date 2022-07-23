@@ -8,7 +8,9 @@
     "ts-prod": "tsc",
     "prepare": "husky install",
     "test": "jest src --watchAll",
-    "compile-sass": "sass src/sass/index.scss public/css/index.css --watch"
+    "compile-sass": "sass src/sass/index.scss public/css/index.css --watch",
+    "compile-sass-prod": "sass src/sass/index.scss public/css/index.css",
+    "prod": "tsc && sass src/sass/index.scss public/css/index.css"
   },
   "parserOptions": {
     "project": "./tsconfig.json",

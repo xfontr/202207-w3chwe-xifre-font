@@ -8,6 +8,7 @@ export interface IComponent {
 export interface IPokeList {
   element: HTMLElement;
   pokeList: CurrentPokeList;
+  count: number;
   currentPage: number;
   updatePage?(direction: boolean): void;
   getPokemons?(): void;
