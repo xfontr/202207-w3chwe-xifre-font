@@ -1,4 +1,4 @@
-import { Pokemon, PokemonList } from "../types/interfaces.js";
+import { CuratedPokemon, Pokemon, PokemonList } from "../types/interfaces.js";
 import currentPokeList from "./currentPokeList.js";
 
 const apiData = {
@@ -30,8 +30,9 @@ const getEachPokemon = async (data: PokemonList) => {
       weight,
       abilities,
       types,
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       sprites: { front_default },
-    } = pokeData;
+    }: CuratedPokemon = pokeData;
 
     currentPokeList.push({
       id,
