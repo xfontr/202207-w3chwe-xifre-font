@@ -3,9 +3,15 @@ export interface Pokemon {
   url: string;
 }
 
-export type PokemonList = {
+export interface PokemonList {
   count: number;
   next: string;
   previous: string;
   results: Array<Pokemon>;
-};
+}
+
+export interface CuratedPokemon {
+  name: string;
+}
+
+export interface CurrentPokeList extends Array<CuratedPokemon> {}

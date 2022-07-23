@@ -1,4 +1,5 @@
-import { Pokemon, PokemonList } from "../types/interfaces.js";
+import { CuratedPokemon, Pokemon, PokemonList } from "../types/interfaces.js";
+import currentPokeList from "./currentPokeList.js";
 
 const apiData = {
   apiUrl: "https://pokeapi.co/api/v2/pokemon",
@@ -9,15 +10,18 @@ const apiData = {
   },
 };
 
-const fetchPokemon = async (pokemon: Pokemon): Promise<void> => {
-  const response = await fetch(pokemon.url);
-  const data = await response.json();
-};
+const getEachPokemon = async (data: PokemonList) => {
+  const pokemons: any = [];
 
-const getEachPokemon = (data: PokemonList) => {
   data.results.forEach((pokemon: Pokemon) => {
-    fetchPokemon(pokemon);
+    const response = fetch(pokemon.url);
+    pokemons.push(response);
   });
+
+  const allData = await Promise.all(pokemons);
+  const pokemonData: any = [];
+
+  await allData.forEach((pokeshit) => pokemonData.push(pokeshit.json()));
 };
 
 const fetchList = async (offset = 0): Promise<void> => {
@@ -27,7 +31,6 @@ const fetchList = async (offset = 0): Promise<void> => {
   const data: any = await response.json();
 
   getEachPokemon(data);
-  return data;
 };
 
 export default fetchList;
