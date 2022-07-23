@@ -14,12 +14,28 @@ const apiData = {
 class PokemonList extends Component implements IPokeList {
   pokeList: CurrentPokeList;
 
+  currentPage = 0;
+
   constructor(parent: HTMLElement) {
     super(parent, "pokemon-list", "section");
 
-    this.getPokemons();
-
     this.render();
+    this.getPokemons();
+    this.addEventListenmers();
+  }
+
+  updatePage(direction: boolean): void {
+    this.currentPage += direction ? -10 : 10;
+    this.currentPage = this.currentPage < 0 ? 0 : this.currentPage;
+    this.element.innerHTML = "";
+    this.render();
+    this.getPokemons();
+    this.addEventListenmers();
+
+    const currentPage = this.element.querySelector(
+      ".card-list__pagination-page"
+    );
+    currentPage.textContent = `${this.currentPage / 10}`;
   }
 
   getPokemons(): void {
@@ -50,7 +66,8 @@ class PokemonList extends Component implements IPokeList {
           sprites: { front_default },
         });
 
-        new PokemonCard(this.element, pokeList[index]);
+        const list: HTMLElement = this.element.querySelector(".card-list");
+        new PokemonCard(list, pokeList[index]);
         index += 1;
       });
     };
@@ -76,16 +93,37 @@ class PokemonList extends Component implements IPokeList {
       return getEachPokemon(results);
     };
 
-    fetchList();
+    fetchList(this.currentPage);
   }
 
   render(): void {
     const html = `
-    <ul class=card-list>
+    <ul class="card-list">
     </ul>
+    <div class="card-list__pagination">
+      <button type="button" class="card-list__pagination-button card-list__pagination-button--back">Back</button>
+      <span class="card-list__pagination-page">0</span>
+      <button type="button" class="card-list__pagination-button card-list__pagination-button--forward">Forward</button>
+    </div>
     `;
 
     this.element.innerHTML = html;
+  }
+
+  addEventListenmers(): void {
+    const backButton = document.querySelector(
+      ".card-list__pagination-button--back"
+    );
+    backButton.addEventListener("click", () => {
+      this.updatePage(true);
+    });
+
+    const forwardButton = this.element.querySelector(
+      ".card-list__pagination-button--forward"
+    );
+    forwardButton.addEventListener("click", () => {
+      this.updatePage(false);
+    });
   }
 }
 export default PokemonList;
