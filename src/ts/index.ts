@@ -1,3 +1,3 @@
 import fetchList from "./apis/pokeList.js";
 
-fetchList(10);
+fetchList(0);
