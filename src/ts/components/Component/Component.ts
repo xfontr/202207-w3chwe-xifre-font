@@ -1,4 +1,4 @@
-import IComponent from "../../types/icomponents.js";
+import { IComponent } from "../../types/icomponents.js";
 
 class Component implements IComponent {
   element: HTMLElement;

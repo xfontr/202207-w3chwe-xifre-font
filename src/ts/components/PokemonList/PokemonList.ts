@@ -1,5 +1,5 @@
-import IComponent from "../../types/icomponents";
-import Component from "../Component/Component";
+import { IComponent } from "../../types/icomponents.js";
+import Component from "../Component/Component.js";
 
 class PokemonList extends Component implements IComponent {
   constructor(parent: HTMLElement) {
