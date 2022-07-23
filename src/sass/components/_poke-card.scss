@@ -1,0 +1,78 @@
+@use "../variables/colors";
+@use "../variables/breakpoints";
+
+.poke-card {
+  display: flex;
+  border-radius: 1em;
+  width: 100%;
+  border: 2px solid colors.$secondary;
+  background-color: #ad141425;
+  padding: 1em;
+
+  @media (min-width: breakpoints.$tablet) {
+    width: 47%;
+  }
+
+  @media (min-width: breakpoints.$desktop) {
+    width: 30%;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  &__id {
+    font-family: "Pokemon solid", sans-serif;
+    font-size: 0.9em;
+    position: relative;
+  }
+
+  &__image {
+    max-width: 60%;
+  }
+
+  &__title {
+    text-align: left;
+    font-size: 2em;
+    margin: 0;
+  }
+
+  &__data-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.8em;
+    max-width: 90%;
+    flex-wrap: wrap;
+  }
+
+  &__data-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+}
+
+// <h3 class="poke-card__title">${this.dataWithCaps}</h3>
+// <span class="poke-card__id">${this.pokemon.id}</span>
+// <img class="poke-card__image" src="${this.pokemon.sprites.other["official-artwork"].front_default}" alt="Artwork of a ${this.pokemon.name} pokemon"></img>
+
+// <ul class="poke-card__data-list">
+//   <li class="poke-card__data-element"> Height:
+//     <span>${this.pokemon.height}</span>
+//   </li>
+
+//   <li class="poke-card__data-element"> Weight:
+//     <span>${this.pokemon.weight}</span>
+//   </li>
+
+//   <li class="poke-card__data-element"> Types:
+//     <span>${typesHtml}</span>
+//   </li>
+
+//   <li class="poke-card__data-element"> Abilities:
+//     <span>${abilitiesHtml}</span>
+//   </li>
+// </ul>

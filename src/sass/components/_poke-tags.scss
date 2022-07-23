@@ -1,0 +1,90 @@
+.tag {
+  padding: 4px 10px 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: block;
+  width: fit-content;
+  margin-top: 0.5em;
+}
+
+.tag.poison {
+  border: 1px solid rgba(29, 51, 26, 0.8);
+  background-color: rgba(29, 51, 26, 0.3);
+}
+
+.tag.grass {
+  border: 1px solid rgba(130, 231, 117, 0.8);
+  background-color: rgba(130, 231, 117, 0.3);
+}
+
+.tag.bug {
+  border: 1px solid rgba(33, 122, 84, 0.8);
+  background-color: rgba(33, 122, 84, 0.3);
+}
+
+.tag.water {
+  border: 1px solid rgba(56, 191, 218, 0.8);
+  background-color: rgba(56, 191, 218, 0.3);
+}
+
+.tag.fire {
+  border: 1px solid rgba(200, 37, 37, 0.8);
+  background-color: rgba(200, 37, 37, 0.3);
+}
+
+.tag.flying {
+  border: 1px solid rgba(37, 53, 200, 0.8);
+  background-color: rgba(37, 53, 200, 0.3);
+}
+
+.tag.electric {
+  border: 1px solid rgba(218, 185, 20, 0.8);
+  background-color: rgba(218, 185, 20, 0.3);
+}
+
+.tag.ground {
+  border: 1px solid rgba(65, 60, 34, 0.8);
+  background-color: rgba(65, 60, 34, 0.3);
+}
+
+.tag.fairy {
+  border: 1px solid rgba(141, 58, 140, 0.8);
+  background-color: rgba(141, 58, 140, 0.3);
+}
+
+.tag.ice {
+  border: 1px solid rgba(0, 238, 255, 0.8);
+  background-color: rgba(0, 238, 255, 0.3);
+}
+
+.tag.ghost {
+  border: 1px solid rgba(5, 16, 17, 0.8);
+  background-color: rgba(5, 16, 17, 0.3);
+  color: white;
+}
+
+.tag.steel {
+  border: 1px solid rgba(69, 101, 123, 0.8);
+  background-color: rgba(69, 101, 123, 0.3);
+}
+
+.tag.rock {
+  border: 1px solid rgba(132, 132, 132, 0.8);
+  background-color: rgba(132, 132, 132, 0.3);
+}
+
+.tag.psychic {
+  border: 1px solid rgba(60, 0, 56, 0.8);
+  background-color: rgba(60, 0, 56, 0.3);
+}
+
+.tag.fighting {
+  border: 1px solid rgba(52, 0, 0, 0.8);
+  background-color: rgba(52, 0, 0, 0.3);
+}
+
+.tag.normal {
+  border: 1px solid rgba(199, 189, 140, 0.8);
+  background-color: rgba(199, 189, 140, 0.3);
+}

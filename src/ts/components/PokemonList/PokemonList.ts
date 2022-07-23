@@ -70,11 +70,12 @@ class PokemonList extends Component implements IPokeList {
           sprites: { other: { "official-artwork": { front_default } } },
         });
 
-        const list: HTMLElement = this.element.querySelector(".card-list");
+        const list: HTMLElement = document.querySelector(".card-list");
         const listElement: HTMLElement = document.createElement("li");
+        listElement.className = "poke-card";
         list.appendChild(listElement);
 
-        new PokemonCard(listElement, pokeList[index]);
+        await new PokemonCard(listElement, pokeList[index]);
 
         index += 1;
       });
@@ -111,7 +112,7 @@ class PokemonList extends Component implements IPokeList {
 
   render(): void {
     const html = `
-    <span class="pokemon-list__count">${this.currentPage}/${this.count}<span>
+    <span class="pokemon-list__count">${this.currentPage}/${this.count} pokemons</span>
     <ul class="card-list">
     </ul>
     <div class="card-list__pagination">

@@ -5,4 +5,4 @@ const body = document.querySelector("body");
 
 new App(body);
 
-new PokemonList(document.querySelector(".app"));
+new PokemonList(document.querySelector("main"));
