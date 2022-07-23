@@ -1,4 +1,4 @@
-import { CuratedPokemon, Pokemon, PokemonList } from "../types/interfaces.js";
+import { CuratedPokemon } from "../types/interfaces.js";
 import currentPokeList from "./currentPokeList.js";
 
 const apiData = {
@@ -10,19 +10,10 @@ const apiData = {
   },
 };
 
-const getEachPokemon = async (data: PokemonList) => {
-  const pokemons: any = [];
-
-  data.results.forEach((pokemon: Pokemon) => {
-    const response = fetch(pokemon.url);
-    pokemons.push(response);
-  });
-
+const readEachPokemon = async (pokemons: Array<Promise<{}>>): Promise<void> => {
   const allData = await Promise.all(pokemons);
 
-  allData.forEach(async (pokemon) => {
-    const pokeData: any = await pokemon.json();
-
+  allData.forEach(async (pokemon: Response) => {
     const {
       id,
       name,
@@ -32,7 +23,7 @@ const getEachPokemon = async (data: PokemonList) => {
       types,
       // eslint-disable-next-line @typescript-eslint/naming-convention
       sprites: { front_default },
-    }: CuratedPokemon = pokeData;
+    }: CuratedPokemon = await pokemon.json();
 
     currentPokeList.push({
       id,
@@ -46,13 +37,24 @@ const getEachPokemon = async (data: PokemonList) => {
   });
 };
 
+const getEachPokemon = async (data: Promise<Array<any>>): Promise<void> => {
+  const pokemons: Array<Promise<{}>> = [];
+
+  Object.values(data).forEach((pokemon: { name: string; url: string }) => {
+    const response = fetch(pokemon.url);
+    pokemons.push(response);
+  });
+
+  readEachPokemon(pokemons);
+};
+
 const fetchList = async (offset = 0): Promise<void> => {
   apiData.offset = `offset=${offset}`;
 
   const response = await fetch(apiData.url());
-  const data: any = await response.json();
+  const { results }: { results: Promise<Array<any>> } = await response.json();
 
-  getEachPokemon(data);
+  getEachPokemon(results);
 };
 
 export default fetchList;
