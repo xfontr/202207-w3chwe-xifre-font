@@ -67,7 +67,11 @@ class PokemonList extends Component implements IPokeList {
         });
 
         const list: HTMLElement = this.element.querySelector(".card-list");
-        new PokemonCard(list, pokeList[index]);
+        const listElement: HTMLElement = document.createElement("li");
+        list.appendChild(listElement);
+
+        new PokemonCard(listElement, pokeList[index]);
+
         index += 1;
       });
     };
