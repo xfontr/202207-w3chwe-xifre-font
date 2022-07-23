@@ -52,8 +52,12 @@ class PokemonList extends Component implements IPokeList {
           weight,
           abilities,
           types,
-          // eslint-disable-next-line @typescript-eslint/naming-convention
-          sprites: { front_default },
+          sprites: {
+            other: {
+              // eslint-disable-next-line @typescript-eslint/naming-convention
+              "official-artwork": { front_default },
+            },
+          },
         }: CuratedPokemon = await pokemon.json();
 
         pokeList.push({
@@ -63,7 +67,7 @@ class PokemonList extends Component implements IPokeList {
           weight,
           abilities,
           types,
-          sprites: { front_default },
+          sprites: { other: { "official-artwork": { front_default } } },
         });
 
         const list: HTMLElement = this.element.querySelector(".card-list");
