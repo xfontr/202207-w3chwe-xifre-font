@@ -6,7 +6,8 @@
   "scripts": {
     "ts-dev": "tsc -w",
     "ts-prod": "tsc",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "jest src --watchAll"
   },
   "parserOptions": {
     "project": "./tsconfig.json",

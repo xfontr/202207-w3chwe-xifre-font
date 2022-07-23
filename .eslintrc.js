@@ -12,5 +12,7 @@ module.exports = {
   },
 
   plugins: ["@typescript-eslint"],
-  rules: {},
+  rules: {
+    "no-new": "off",
+  },
 };
