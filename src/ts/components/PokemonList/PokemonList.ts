@@ -105,9 +105,17 @@ class PokemonList extends Component implements IPokeList {
     <ul class="card-list">
     </ul>
     <div class="card-list__pagination">
-      <button type="button" class="card-list__pagination-button card-list__pagination-button--back">Back</button>
+
+      <button type="button" class="card-list__pagination-button card-list__pagination-button--back">
+        <i class="fa-solid fa-circle-chevron-left"></i>
+      </button>
+
       <span class="card-list__pagination-page">0</span>
-      <button type="button" class="card-list__pagination-button card-list__pagination-button--forward">Forward</button>
+
+      <button type="button" class="card-list__pagination-button card-list__pagination-button--forward">
+        <i class="fa-solid fa-circle-chevron-right"></i>
+      </button>
+
     </div>
     `;
 
