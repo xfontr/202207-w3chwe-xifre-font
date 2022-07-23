@@ -17,3 +17,12 @@ body {
 ul {
   list-style: none;
 }
+
+button {
+  padding: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  box-shadow: none;
+}
