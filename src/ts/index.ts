@@ -1,3 +1,8 @@
-import fetchList from "./apis/pokeList.js";
+import App from "./components/App/App.js";
+import PokemonList from "./components/PokemonList/PokemonList.js";
 
-fetchList(0);
+const body = document.querySelector("body");
+
+new App(body);
+
+new PokemonList(document.querySelector(".app"));
