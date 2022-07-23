@@ -1,4 +1,4 @@
-import IComponent from "../../types/icomponents.js";
+import { IComponent } from "../../types/icomponents.js";
 import Component from "../Component/Component.js";
 
 class App extends Component implements IComponent {

@@ -1,6 +1,9 @@
-interface IComponent {
+export interface IComponent {
   element: HTMLElement;
   render?(): void;
 }
 
-export default IComponent;
+export interface IPokemonCard {
+  element: HTMLElement;
+  render?(): void;
+}
