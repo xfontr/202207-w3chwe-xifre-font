@@ -7,7 +7,8 @@
     "ts-dev": "tsc -w",
     "ts-prod": "tsc",
     "prepare": "husky install",
-    "test": "jest src --watchAll"
+    "test": "jest src --watchAll",
+    "compile-sass": "sass src/sass/index.scss public/css/index.css --watch"
   },
   "parserOptions": {
     "project": "./tsconfig.json",
@@ -30,6 +31,7 @@
     "jest": "^28.1.3",
     "jest-environment-jsdom": "^28.1.3",
     "jest-ts-webcompat-resolver": "^1.0.0",
+    "sass": "^1.54.0",
     "ts-jest": "^28.0.7",
     "typescript": "^4.7.4"
   }
