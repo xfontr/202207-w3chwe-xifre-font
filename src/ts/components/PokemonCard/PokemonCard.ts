@@ -25,7 +25,9 @@ class PokemonCard extends Component implements IPokemonCard {
     this.pokemon.types.forEach((type) => {
       this.nameWithCaps(type.type.name);
 
-      typesHtml += `<li>${this.dataWithCaps}</li>`;
+      typesHtml += `<li><span class="${this.dataWithCaps.toLowerCase()} tag tag--type">${
+        this.dataWithCaps
+      }</span></li>`;
     });
     typesHtml += "</ul>";
 
@@ -33,7 +35,7 @@ class PokemonCard extends Component implements IPokemonCard {
     this.pokemon.abilities.forEach((ability) => {
       this.nameWithCaps(ability.ability.name);
 
-      abilitiesHtml += `<li>${this.dataWithCaps}</li>`;
+      abilitiesHtml += `<li><span class="tag tag--abilities">${this.dataWithCaps}</span></li>`;
     });
     abilitiesHtml += "</ul>";
 
@@ -41,7 +43,7 @@ class PokemonCard extends Component implements IPokemonCard {
 
     const html = `
     <h3 class="poke-card__title">${this.dataWithCaps}</h3>
-    <span class="poke-card__id">${this.pokemon.id}</span>
+    <span class="poke-card__id">#${this.pokemon.id}</span>
     <img class="poke-card__image" src="${
       this.pokemon.sprites.other["official-artwork"].front_default
     }" alt="Artwork of a ${this.pokemon.name} pokemon"></img>
@@ -52,15 +54,15 @@ class PokemonCard extends Component implements IPokemonCard {
       </li>
 
       <li class="poke-card__data-element"> Weight:
-        <span class="tag">${this.pokemon.weight}</span>
+        <span class="tag">${this.pokemon.weight / 10} kg</span>
       </li>
 
       <li class="poke-card__data-element"> Types:
-        <span class="tag">${typesHtml}</span>
+        ${typesHtml}
       </li>
 
       <li class="poke-card__data-element"> Abilities:
-        <span class="tag">${abilitiesHtml}</span>
+        ${abilitiesHtml}
       </li>
     </ul>
     `;

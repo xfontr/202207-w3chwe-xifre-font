@@ -75,7 +75,7 @@ class PokemonList extends Component implements IPokeList {
         listElement.className = "poke-card";
         list.appendChild(listElement);
 
-        new PokemonCard(listElement, pokeList[index]);
+        await new PokemonCard(listElement, pokeList[index]);
 
         index += 1;
       });

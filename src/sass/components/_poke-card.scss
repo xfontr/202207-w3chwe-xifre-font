@@ -7,10 +7,26 @@
   width: 100%;
   border: 2px solid colors.$secondary;
   background-color: #ad141425;
-  padding: 2em;
+  padding: 1em;
+
+  @media (min-width: breakpoints.$tablet) {
+    width: 47%;
+  }
 
   @media (min-width: breakpoints.$desktop) {
-    width: 25%;
+    width: 30%;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  &__id {
+    font-family: "Pokemon solid", sans-serif;
+    font-size: 0.9em;
+    position: relative;
   }
 
   &__image {
@@ -21,6 +37,21 @@
     text-align: left;
     font-size: 2em;
     margin: 0;
+  }
+
+  &__data-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.8em;
+    max-width: 90%;
+    flex-wrap: wrap;
+  }
+
+  &__data-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
   }
 }
 
