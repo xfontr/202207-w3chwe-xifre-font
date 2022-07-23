@@ -1,0 +1,19 @@
+@use "../variables/colors";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: montserrat, sans-serif;
+  color: colors.$typography;
+}
+
+body {
+  margin: 0;
+  background-color: colors.$primary;
+}
+
+ul {
+  list-style: none;
+}
