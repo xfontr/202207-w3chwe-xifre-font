@@ -2,7 +2,7 @@
 
 .header {
   &__title {
-    font-family: "Pokemon solid";
+    font-family: "Pokemon solid", sans-serif;
     font-size: 5em;
     color: colors.$primary-brighter;
     -webkit-text-stroke: 3px;

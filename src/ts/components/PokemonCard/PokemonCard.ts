@@ -7,7 +7,7 @@ class PokemonCard extends Component implements IPokemonCard {
   dataWithCaps: string;
 
   constructor(parent: HTMLElement, pokemon: CuratedPokemon = undefined) {
-    super(parent, "poke-card", "article");
+    super(parent, "poke-card__container", "article");
 
     this.pokemon = pokemon;
 
@@ -42,23 +42,25 @@ class PokemonCard extends Component implements IPokemonCard {
     const html = `
     <h3 class="poke-card__title">${this.dataWithCaps}</h3>
     <span class="poke-card__id">${this.pokemon.id}</span>
-    <img class="poke-card__image" src="${this.pokemon.sprites.other["official-artwork"].front_default}" alt="Artwork of a ${this.pokemon.name} pokemon"></img>
+    <img class="poke-card__image" src="${
+      this.pokemon.sprites.other["official-artwork"].front_default
+    }" alt="Artwork of a ${this.pokemon.name} pokemon"></img>
     
     <ul class="poke-card__data-list">
       <li class="poke-card__data-element"> Height:
-        <span>${this.pokemon.height}</span>
+        <span class="tag">${this.pokemon.height / 10} m</span>
       </li>
 
       <li class="poke-card__data-element"> Weight:
-        <span>${this.pokemon.weight}</span>
+        <span class="tag">${this.pokemon.weight}</span>
       </li>
 
       <li class="poke-card__data-element"> Types:
-        <span>${typesHtml}</span>
+        <span class="tag">${typesHtml}</span>
       </li>
 
       <li class="poke-card__data-element"> Abilities:
-        <span>${abilitiesHtml}</span>
+        <span class="tag">${abilitiesHtml}</span>
       </li>
     </ul>
     `;
