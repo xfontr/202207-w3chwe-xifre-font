@@ -1,0 +1,12 @@
+@use "../variables/colors";
+
+.header {
+  &__title {
+    font-family: "Pokemon solid";
+    font-size: 5em;
+    color: colors.$primary-brighter;
+    -webkit-text-stroke: 3px;
+    -webkit-text-stroke-color: colors.$secondary-brighter;
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+  }
+}

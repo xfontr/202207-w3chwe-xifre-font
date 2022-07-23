@@ -1,1 +1,5 @@
-@use "./partials/reset.scss";
+@use "./variables/colors";
+
+@use "./components/reset";
+@use "./components/app";
+@use "./components/header";

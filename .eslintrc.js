@@ -14,5 +14,10 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   rules: {
     "no-new": "off",
+    "@typescript-eslint/lines-between-class-members": [
+      "error",
+      "always",
+      { exceptAfterSingleLine: true },
+    ],
   },
 };

@@ -9,7 +9,11 @@ class App extends Component implements IComponent {
   }
 
   render(): void {
-    const html = `<header></header><main></main>`;
+    const html = `
+    <header class="header">
+      <h1 class="header__title">My Pokedex</h1>
+    </header>
+    <main></main>`;
 
     this.element.innerHTML = html;
   }
