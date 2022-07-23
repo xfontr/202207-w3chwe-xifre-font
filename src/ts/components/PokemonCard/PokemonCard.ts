@@ -41,9 +41,10 @@ class PokemonCard extends Component implements IPokemonCard {
 
     const html = `
     <h3 class="poke-card__title">${this.dataWithCaps}</h3>
+    <span class="poke-card__id">${this.pokemon.id}</span>
     <img class="poke-card__image" src="${this.pokemon.sprites.other["official-artwork"].front_default}" alt="Artwork of a ${this.pokemon.name} pokemon"></img>
+    
     <ul class="poke-card__data-list">
-
       <li class="poke-card__data-element"> Height:
         <span>${this.pokemon.height}</span>
       </li>
