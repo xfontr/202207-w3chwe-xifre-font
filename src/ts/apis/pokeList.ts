@@ -1,4 +1,4 @@
-import { CuratedPokemon, Pokemon, PokemonList } from "../types/interfaces.js";
+import { Pokemon, PokemonList } from "../types/interfaces.js";
 import currentPokeList from "./currentPokeList.js";
 
 const apiData = {
@@ -19,9 +19,30 @@ const getEachPokemon = async (data: PokemonList) => {
   });
 
   const allData = await Promise.all(pokemons);
-  const pokemonData: any = [];
 
-  await allData.forEach((pokeshit) => pokemonData.push(pokeshit.json()));
+  allData.forEach(async (pokemon) => {
+    const pokeData: any = await pokemon.json();
+
+    const {
+      id,
+      name,
+      height,
+      weight,
+      abilities,
+      types,
+      sprites: { front_default },
+    } = pokeData;
+
+    currentPokeList.push({
+      id,
+      name,
+      height,
+      weight,
+      abilities,
+      types,
+      sprites: { front_default },
+    });
+  });
 };
 
 const fetchList = async (offset = 0): Promise<void> => {
