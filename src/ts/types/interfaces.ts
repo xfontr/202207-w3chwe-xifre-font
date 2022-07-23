@@ -18,7 +18,9 @@ export interface CuratedPokemon {
   abilities: CuratedPokemonAbilitiesList;
   types: CuratedPokemonTypesList;
   sprites: {
-    front_default: string;
+    other: {
+      "official-artwork": { front_default: string };
+    };
   };
 }
 
