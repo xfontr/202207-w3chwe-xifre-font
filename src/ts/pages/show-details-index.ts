@@ -4,4 +4,9 @@ import ShowDetails from "../components/ShowDetails/ShowDetails.js";
 const body = document.querySelector("body");
 
 new App(body);
-new ShowDetails(document.querySelector("main"));
+const storedData = localStorage.getItem("isEditable");
+if (storedData === "true") {
+  new ShowDetails(document.querySelector("main"), true);
+} else {
+  new ShowDetails(document.querySelector("main"), false);
+}

@@ -37,6 +37,11 @@ class PokemonCard extends Component implements IPokemonCard {
         "href"
       )}?${showDetails.getAttribute("id")}`;
 
+      localStorage.setItem(
+        "isEditable",
+        `${this.isExternal ? "false" : "true"}`
+      );
+
       window.location.href = url;
     });
 
@@ -109,6 +114,7 @@ class PokemonCard extends Component implements IPokemonCard {
     this.nameWithCaps(this.pokemon.name);
 
     const html = `
+
     <h3 class="poke-card__title">${this.dataWithCaps}</h3>
     <span class="poke-card__id">#${this.pokemon.id}</span>
     <a href="/pages/show-detail" id="${
