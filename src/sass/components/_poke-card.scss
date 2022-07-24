@@ -5,8 +5,7 @@
   display: flex;
   border-radius: 1em;
   width: 100%;
-  border: 2px solid colors.$primary-darker;
-  background-color: #ad141425;
+  background-color: colors.$contrast-lighter;
   padding: 1em;
 
   @media (min-width: breakpoints.$tablet) {
@@ -31,6 +30,8 @@
 
   &__image {
     max-width: 60%;
+    margin-top: 0.5em;
+    margin-bottom: 1.5em;
   }
 
   &__title {
@@ -53,4 +54,39 @@
     flex-wrap: wrap;
     gap: 0.5em;
   }
+
+  &__button {
+    font-size: 1.7em;
+    color: colors.$secondary-darker;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__show-details {
+    font-size: 1.7em;
+    color: colors.$secondary !important;
+    position: absolute;
+    top: 1.5em;
+    right: 0;
+    transition: 0.4s;
+  }
+
+  &__button:hover,
+  &__show-details:hover {
+    opacity: 0.8;
+  }
+
+  &__button:active,
+  &__show-details:active {
+    transform: scale(1.2) !important;
+  }
+}
+
+.success-display:after {
+  content: "+1";
+  position: absolute;
+  top: 3px;
+  right: -30px;
+  font-size: 0.7em;
 }
