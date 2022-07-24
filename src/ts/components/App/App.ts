@@ -11,7 +11,9 @@ class App extends Component implements IComponent {
   render(): void {
     const html = `
     <header class="header">
+    <a href="/">
       <h1 class="header__title">My Pokedex</h1>
+    </a>
     </header>
     <main></main>`;
 
