@@ -115,10 +115,15 @@ class PokemonList extends Component implements IPokeList {
 
   render(): void {
     const html = `
-    <span class="pokemon-list__count">${this.currentPage}/${this.count} pokemons</span>
+    <header class="card-list__header">
+      <span class="card-list__count">${this.currentPage}/${this.count} pokemons</span>
+      <a class="card-list__link" href="/pages/my-pokedex">My pokemon</a>
+    </header>
+
     <ul class="card-list">
     </ul>
-    <div class="card-list__pagination">
+
+    <footer class="card-list__pagination">
 
       <button type="button" class="card-list__pagination-button card-list__pagination-button--back">
         <i class="fa-solid fa-circle-chevron-left"></i>
@@ -130,7 +135,7 @@ class PokemonList extends Component implements IPokeList {
         <i class="fa-solid fa-circle-chevron-right"></i>
       </button>
 
-    </div>
+    </footer>
     `;
 
     this.element.innerHTML = html;
