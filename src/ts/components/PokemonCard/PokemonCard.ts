@@ -5,11 +5,17 @@ import Component from "../Component/Component.js";
 class PokemonCard extends Component implements IPokemonCard {
   pokemon: CuratedPokemon;
   dataWithCaps: string;
+  isExternal: boolean;
 
-  constructor(parent: HTMLElement, pokemon: CuratedPokemon = undefined) {
+  constructor(
+    parent: HTMLElement,
+    pokemon: CuratedPokemon = undefined,
+    isExternal = true
+  ) {
     super(parent, "poke-card__container", "article");
 
     this.pokemon = pokemon;
+    this.isExternal = isExternal;
 
     this.render();
     this.addEventListeners();
@@ -35,23 +41,37 @@ class PokemonCard extends Component implements IPokemonCard {
 
     const addButton = this.element.querySelector(".button");
     addButton.addEventListener("click", () => {
-      fetch("https://custom-poke-api.herokuapp.com/pokemon", {
-        method: "POST",
-        body: JSON.stringify({
-          pokeId: this.pokemon.id,
-          name: this.pokemon.name,
-          height: this.pokemon.height,
-          weight: this.pokemon.weight,
-          abilities: this.pokemon.abilities,
-          types: this.pokemon.types,
-          sprites: this.pokemon.sprites,
-        }),
-
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      }).then((response) => response.json());
+      if (this.isExternal) {
+        this.addPokemon();
+      } else {
+        this.deletePokemon();
+      }
     });
+  }
+
+  deletePokemon(): void {
+    fetch(`https://custom-poke-api.herokuapp.com/pokemon/${this.pokemon.id}`, {
+      method: "DELETE",
+    });
+  }
+
+  addPokemon(): void {
+    fetch("https://custom-poke-api.herokuapp.com/pokemon", {
+      method: "POST",
+      body: JSON.stringify({
+        pokeId: this.pokemon.id,
+        name: this.pokemon.name,
+        height: this.pokemon.height,
+        weight: this.pokemon.weight,
+        abilities: this.pokemon.abilities,
+        types: this.pokemon.types,
+        sprites: this.pokemon.sprites,
+      }),
+
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }).then((response) => response.json());
   }
 
   render(): void {
@@ -107,7 +127,9 @@ class PokemonCard extends Component implements IPokemonCard {
       </li>
     </ul>
 
-    <button type="button" class="button">Add</button>
+    <button type="button" class="button">${
+      this.isExternal ? "Add" : "Remove"
+    }</button>
     `;
 
     this.element.innerHTML = html;

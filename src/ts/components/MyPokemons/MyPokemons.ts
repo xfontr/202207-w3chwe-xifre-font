@@ -32,7 +32,7 @@ class MyPokemons extends Component implements IComponent {
         listElement.className = "poke-card";
         list.appendChild(listElement);
 
-        await new PokemonCard(listElement, dataElement);
+        await new PokemonCard(listElement, dataElement, false);
       });
     };
 
