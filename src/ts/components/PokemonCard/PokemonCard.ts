@@ -21,12 +21,16 @@ class PokemonCard extends Component implements IPokemonCard {
 
   addEventListeners() {
     if (!this.pokemon) return;
+
     const showDetails = this.element.querySelector(".poke-card__show-details");
     showDetails.addEventListener("click", (event) => {
       event.preventDefault();
-      sessionStorage.setItem("pokeId", showDetails.getAttribute("id"));
 
-      window.location.href = showDetails.getAttribute("href");
+      const url = `${showDetails.getAttribute(
+        "href"
+      )}?${showDetails.getAttribute("id")}`;
+
+      window.location.href = url;
     });
   }
 
