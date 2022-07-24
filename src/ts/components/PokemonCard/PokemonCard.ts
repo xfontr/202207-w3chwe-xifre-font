@@ -42,6 +42,8 @@ class PokemonCard extends Component implements IPokemonCard {
         `${this.isExternal ? "false" : "true"}`
       );
 
+      localStorage.setItem("pokemon", JSON.stringify(this.pokemon));
+
       window.location.href = url;
     });
 
