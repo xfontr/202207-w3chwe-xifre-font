@@ -1,4 +1,5 @@
 @use "../variables/colors";
+@use "../variables/breakpoints";
 
 .pokemon-list {
   box-shadow: 15px 15px 30px 15px rgba(0, 0, 0, 0.1);
@@ -26,6 +27,10 @@
     justify-content: flex-start;
     align-items: center;
     padding-bottom: 1.4em;
+
+    @media (max-width: breakpoints.$tablet) {
+      font-size: 14px;
+    }
   }
 
   &__count {

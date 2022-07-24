@@ -94,6 +94,11 @@
 
     font-size: 1.7em;
     cursor: pointer;
+
+    @media (max-width: breakpoints.$tablet) {
+      top: 5.5em;
+      right: 2.5em;
+    }
   }
 }
 
