@@ -7,9 +7,12 @@ class ShowDetails extends Component implements IComponent {
   pokemon: CuratedPokemon;
   dataWithCaps: string;
   id = "";
+  isEditable: boolean;
 
-  constructor(parent: HTMLElement) {
-    super(parent, "details-container", "section");
+  constructor(parent: HTMLElement, isEditable: boolean = false) {
+    super(parent, "pokemon-list pokemon-list--data", "section");
+
+    this.isEditable = isEditable;
 
     this.getQuery();
     this.fetchAndRender();
@@ -84,33 +87,48 @@ class ShowDetails extends Component implements IComponent {
       this.nameWithCaps(this.pokemon.name);
 
       const html = `
-    <h3 class="poke-card__title">${this.dataWithCaps}</h3>
-    <span class="poke-card__id">#${this.pokemon.id}</span>
-      <i class="fa-solid fa-eye"></i>
-    </a>
-    <img class="poke-card__image" src="${
-      this.pokemon.sprites.other["official-artwork"].front_default
-    }" alt="Artwork of a ${this.pokemon.name} pokemon"></img>
-    
-    <ul class="poke-card__data-list">
-      <li class="poke-card__data-element"> Height:
-        <span class="tag">${this.pokemon.height / 10} m</span>
-      </li>
 
-      <li class="poke-card__data-element"> Weight:
-        <span class="tag">${this.pokemon.weight / 10} kg</span>
-      </li>
-    </ul>
+    <header class="card-list__header" style="width: 100%">
+      <i class="card-list__count fa-solid fa-eye"></i>
+      <a class="card-list__link card-list__link--not-last" href="/pages/my-pokedex">Main Pokedex</a>
+      <a class="card-list__link" href="/pages/my-pokedex">My pokemon</a>
+    </header>
     
-    <ul class="poke-card__data-list">
-      <li class="poke-card__data-element"> Types:
-        ${typesHtml}
-      </li>
+    <div clas="poke-card__data-group">
+      <img class="poke-card__image" src="${
+        this.pokemon.sprites.other["official-artwork"].front_default
+      }" alt="Artwork of a ${this.pokemon.name} pokemon"></img>
+    </div>
 
-      <li class="poke-card__data-element"> Abilities:
-        ${abilitiesHtml}
-      </li>
-    </ul>
+    <div clas="poke-card__data-group">
+      <h3 class="poke-card__title">${this.dataWithCaps}</h3>
+      <span class="poke-card__id">ID: #${this.pokemon.id}</span>
+        
+      <ul class="poke-card__data-list">
+        <li class="poke-card__data-element"> Height:
+          <span class="tag">${this.pokemon.height / 10} m</span>
+        </li>
+
+        <li class="poke-card__data-element"> Weight:
+          <span class="tag">${this.pokemon.weight / 10} kg</span>
+          </li>
+        </ul>
+        
+        <ul class="poke-card__data-list">
+          <li class="poke-card__data-element" style="width: 100%"> Types:
+          ${typesHtml}
+        </li>
+
+        <li class="poke-card__data-element"> Abilities:
+          ${abilitiesHtml}
+        </li>
+      </ul>
+    </div>
+      ${
+        this.isEditable
+          ? '<a class="poke-card__edit"><i class="fa-solid fa-pencil"></i></a>'
+          : ""
+      }      
     `;
 
       this.element.innerHTML = html;

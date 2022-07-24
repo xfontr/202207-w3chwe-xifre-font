@@ -57,7 +57,6 @@ class MyPokemons extends Component implements IComponent {
       <a class="card-list__link" href="/">Main Pokedex</a>
     </header>
     <ul class="card-list">
-
     </ul>
     `;
 

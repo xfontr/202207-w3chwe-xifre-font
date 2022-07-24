@@ -6,6 +6,12 @@
   border-radius: 3em;
   background-color: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(10px);
+
+  &--data {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 }
 
 .card-list {
@@ -28,7 +34,8 @@
     font-weight: bold;
   }
 
-  &__count:after {
+  &__count:after,
+  &__link--not-last:after {
     content: "|";
     padding-left: 0.4em;
     padding-right: 0.4em;

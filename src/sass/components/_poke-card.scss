@@ -85,6 +85,22 @@
   &__show-details:active {
     transform: scale(1.2) !important;
   }
+
+  &__edit {
+    color: colors.$secondary !important;
+    position: absolute;
+    top: 2.5em;
+    right: 2.5em;
+
+    font-size: 1.7em;
+    cursor: pointer;
+  }
+}
+
+.poke-card {
+  &__data-group {
+    width: 45%;
+  }
 }
 
 .success-display:after {
