@@ -5,7 +5,7 @@
   display: flex;
   border-radius: 1em;
   width: 100%;
-  border: 2px solid colors.$secondary;
+  border: 2px solid colors.$primary-darker;
   background-color: #ad141425;
   padding: 1em;
 
@@ -54,25 +54,3 @@
     gap: 0.5em;
   }
 }
-
-// <h3 class="poke-card__title">${this.dataWithCaps}</h3>
-// <span class="poke-card__id">${this.pokemon.id}</span>
-// <img class="poke-card__image" src="${this.pokemon.sprites.other["official-artwork"].front_default}" alt="Artwork of a ${this.pokemon.name} pokemon"></img>
-
-// <ul class="poke-card__data-list">
-//   <li class="poke-card__data-element"> Height:
-//     <span>${this.pokemon.height}</span>
-//   </li>
-
-//   <li class="poke-card__data-element"> Weight:
-//     <span>${this.pokemon.weight}</span>
-//   </li>
-
-//   <li class="poke-card__data-element"> Types:
-//     <span>${typesHtml}</span>
-//   </li>
-
-//   <li class="poke-card__data-element"> Abilities:
-//     <span>${abilitiesHtml}</span>
-//   </li>
-// </ul>
