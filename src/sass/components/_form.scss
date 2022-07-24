@@ -1,0 +1,21 @@
+.full-screen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.form {
+  background-color: white;
+  padding: 2em;
+  border-radius: 1em;
+  box-shadow: 10px 10px 30px 10px rgba(0, 0, 0, 0.1);
+}
