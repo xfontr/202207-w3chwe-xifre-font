@@ -126,7 +126,7 @@ class PokemonCard extends Component implements IPokemonCard {
       this.pokemon.sprites.other["official-artwork"].front_default
     }" alt="Artwork of a ${this.pokemon.name} pokemon"></img>
     
-    <ul class="poke-card__data-list">
+    <ul class="poke-card__data-list poke-card__data-list--top">
       <li class="poke-card__data-element"> Height:
         <span class="tag">${this.pokemon.height / 10} m</span>
       </li>
@@ -134,8 +134,10 @@ class PokemonCard extends Component implements IPokemonCard {
       <li class="poke-card__data-element"> Weight:
         <span class="tag">${this.pokemon.weight / 10} kg</span>
       </li>
+    </ul>
 
-      <li class="poke-card__data-element"> Types:
+    <ul class="poke-card__data-list poke-card__data-list--bottom">
+      <li class="poke-card__data-element" style="width: 100%"> Types:
         ${typesHtml}
       </li>
 
