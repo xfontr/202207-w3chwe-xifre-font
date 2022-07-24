@@ -10,6 +10,9 @@ const apiData = {
   url() {
     return `${this.apiUrl}?${this.offset}&${this.limit}`;
   },
+  localApi() {
+    return `https://custom-poke-api.herokuapp.com/pokemon`;
+  },
 };
 class PokemonList extends Component implements IPokeList {
   pokeList: CurrentPokeList;

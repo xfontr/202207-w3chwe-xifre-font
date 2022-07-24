@@ -11,7 +11,8 @@ export interface PokemonList {
 }
 
 export interface CuratedPokemon {
-  id: number;
+  pokeId?: number;
+  id?: number;
   name: string;
   height: number;
   weight: number;
