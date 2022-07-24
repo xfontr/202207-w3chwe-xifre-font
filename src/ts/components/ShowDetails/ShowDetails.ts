@@ -93,38 +93,37 @@ class ShowDetails extends Component implements IComponent {
       <a class="card-list__link card-list__link--not-last" href="/pages/my-pokedex">Main Pokedex</a>
       <a class="card-list__link" href="/pages/my-pokedex">My pokemon</a>
     </header>
-
-     <div clas="poke-card__data-group">
-        <img class="poke-card__image" src="${
-          this.pokemon.sprites.other["official-artwork"].front_default
-        }" alt="Artwork of a ${this.pokemon.name} pokemon"></img>
+    
+    <div clas="poke-card__data-group">
+      <img class="poke-card__image" src="${
+        this.pokemon.sprites.other["official-artwork"].front_default
+      }" alt="Artwork of a ${this.pokemon.name} pokemon"></img>
     </div>
 
-
-      <div clas="poke-card__data-group">
-        <h3 class="poke-card__title">${this.dataWithCaps}</h3>
-        <span class="poke-card__id">ID: #${this.pokemon.id}</span>
+    <div clas="poke-card__data-group">
+      <h3 class="poke-card__title">${this.dataWithCaps}</h3>
+      <span class="poke-card__id">ID: #${this.pokemon.id}</span>
         
-        <ul class="poke-card__data-list">
-          <li class="poke-card__data-element"> Height:
-            <span class="tag">${this.pokemon.height / 10} m</span>
-          </li>
+      <ul class="poke-card__data-list">
+        <li class="poke-card__data-element"> Height:
+          <span class="tag">${this.pokemon.height / 10} m</span>
+        </li>
 
-          <li class="poke-card__data-element"> Weight:
-            <span class="tag">${this.pokemon.weight / 10} kg</span>
+        <li class="poke-card__data-element"> Weight:
+          <span class="tag">${this.pokemon.weight / 10} kg</span>
           </li>
         </ul>
         
         <ul class="poke-card__data-list">
           <li class="poke-card__data-element" style="width: 100%"> Types:
-            ${typesHtml}
-          </li>
+          ${typesHtml}
+        </li>
 
-          <li class="poke-card__data-element"> Abilities:
-            ${abilitiesHtml}
-          </li>
-        </ul>
-      </div>
+        <li class="poke-card__data-element"> Abilities:
+          ${abilitiesHtml}
+        </li>
+      </ul>
+    </div>
       ${
         this.isEditable
           ? '<a class="poke-card__edit"><i class="fa-solid fa-pencil"></i></a>'
