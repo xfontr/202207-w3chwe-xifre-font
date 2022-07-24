@@ -6,18 +6,34 @@ class ShowDetails extends Component implements IComponent {
   data: any;
   pokemon: CuratedPokemon;
   dataWithCaps: string;
+  id = "";
 
   constructor(parent: HTMLElement) {
     super(parent, "details-container", "section");
+
+    const getQuery = () => {
+      let query = false;
+      let id = "";
+      for (let index = 0; index < window.location.href.length; index += 1) {
+        if (query) {
+          id += window.location.href[index];
+        }
+        if (window.location.href[index] === "?") {
+          query = true;
+        }
+      }
+
+      this.id = id;
+    };
+
+    getQuery();
     this.fetchAndRender();
   }
 
   fetchAndRender() {
-    if (!this.pokemon) return;
-
     const getData = async () => {
       const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${sessionStorage.getItem("pokeId")}`
+        `https://pokeapi.co/api/v2/pokemon/${this.id}`
       );
       const {
         id,
