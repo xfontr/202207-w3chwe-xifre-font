@@ -1,6 +1,7 @@
 import { IComponent } from "../../types/icomponents.js";
 import { CuratedPokemon } from "../../types/interfaces.js";
 import Component from "../Component/Component.js";
+import Form from "../Form/Form.js";
 
 class ShowDetails extends Component implements IComponent {
   data: any;
@@ -132,6 +133,7 @@ class ShowDetails extends Component implements IComponent {
     `;
 
       this.element.innerHTML = html;
+      this.addEventListeners();
     };
 
     getData();
@@ -139,6 +141,16 @@ class ShowDetails extends Component implements IComponent {
 
   nameWithCaps(name: string): void {
     this.dataWithCaps = name.charAt(0).toUpperCase() + name.slice(1);
+  }
+
+  addEventListeners(): void {
+    if (!this.isEditable) return;
+
+    const editButton = this.element.querySelector(".poke-card__edit");
+
+    editButton.addEventListener("click", () => {
+      new Form(document.body);
+    });
   }
 }
 

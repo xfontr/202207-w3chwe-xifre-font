@@ -1,9 +1,11 @@
-import { IComponent } from "../../types/icomponents";
-import Component from "../Component/Component";
+import { IComponent } from "../../types/icomponents.js";
+import Component from "../Component/Component.js";
 
 class Form extends Component implements IComponent {
   constructor(parent: HTMLElement) {
     super(parent, "full-screen", "div");
+
+    this.render();
   }
 
   render(): void {
@@ -24,6 +26,7 @@ class Form extends Component implements IComponent {
       <button type="submit">Update data</button>
     </div>
     `;
+
     this.element.innerHTML = html;
   }
 }

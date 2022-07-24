@@ -118,7 +118,7 @@ class PokemonCard extends Component implements IPokemonCard {
     <h3 class="poke-card__title">${this.dataWithCaps}</h3>
     <span class="poke-card__id">#${this.pokemon.id}</span>
     <a href="/pages/show-detail" id="${
-      this.pokemon.id
+      this.isExternal ? this.pokemon.id : this.pokemon.pokeId
     }" class="poke-card__show-details">
       <i class="fa-solid fa-eye"></i>
     </a>
