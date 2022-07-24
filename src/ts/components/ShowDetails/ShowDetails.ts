@@ -87,9 +87,6 @@ class ShowDetails extends Component implements IComponent {
       const html = `
     <h3 class="poke-card__title">${this.dataWithCaps}</h3>
     <span class="poke-card__id">#${this.pokemon.id}</span>
-    <a href="/pages/show-detail" id="${
-      this.pokemon.id
-    }" class="poke-card__show-details">
       <i class="fa-solid fa-eye"></i>
     </a>
     <img class="poke-card__image" src="${
