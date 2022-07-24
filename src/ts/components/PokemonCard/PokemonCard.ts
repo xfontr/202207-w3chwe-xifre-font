@@ -1,6 +1,7 @@
 import { IPokemonCard } from "../../types/icomponents.js";
 import { CuratedPokemon } from "../../types/interfaces.js";
 import Component from "../Component/Component.js";
+import MyPokemons from "../MyPokemons/MyPokemons.js";
 
 class PokemonCard extends Component implements IPokemonCard {
   pokemon: CuratedPokemon;
@@ -49,10 +50,16 @@ class PokemonCard extends Component implements IPokemonCard {
     });
   }
 
-  deletePokemon(): void {
-    fetch(`https://custom-poke-api.herokuapp.com/pokemon/${this.pokemon.id}`, {
-      method: "DELETE",
-    });
+  async deletePokemon(): Promise<void> {
+    await fetch(
+      `https://custom-poke-api.herokuapp.com/pokemon/${this.pokemon.id}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    document.querySelector("main").innerHTML = "";
+    new MyPokemons(document.querySelector("main"));
   }
 
   addPokemon(): void {
