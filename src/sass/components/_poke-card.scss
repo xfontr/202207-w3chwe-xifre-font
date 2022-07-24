@@ -47,6 +47,10 @@
     gap: 0.8em;
     max-width: 90%;
     flex-wrap: wrap;
+
+    &--bottom {
+      margin-top: 0.9em;
+    }
   }
 
   &__data-container {

@@ -11,23 +11,23 @@ class ShowDetails extends Component implements IComponent {
   constructor(parent: HTMLElement) {
     super(parent, "details-container", "section");
 
-    const getQuery = () => {
-      let query = false;
-      let id = "";
-      for (let index = 0; index < window.location.href.length; index += 1) {
-        if (query) {
-          id += window.location.href[index];
-        }
-        if (window.location.href[index] === "?") {
-          query = true;
-        }
-      }
-
-      this.id = id;
-    };
-
-    getQuery();
+    this.getQuery();
     this.fetchAndRender();
+  }
+
+  getQuery(): void {
+    let query = false;
+    let id = "";
+    for (let index = 0; index < window.location.href.length; index += 1) {
+      if (query) {
+        id += window.location.href[index];
+      }
+      if (window.location.href[index] === "?") {
+        query = true;
+      }
+    }
+
+    this.id = id;
   }
 
   fetchAndRender() {
@@ -59,7 +59,6 @@ class ShowDetails extends Component implements IComponent {
         types,
         sprites: {
           other: {
-            // eslint-disable-next-line @typescript-eslint/naming-convention
             "official-artwork": { front_default },
           },
         },
@@ -101,7 +100,9 @@ class ShowDetails extends Component implements IComponent {
       <li class="poke-card__data-element"> Weight:
         <span class="tag">${this.pokemon.weight / 10} kg</span>
       </li>
-
+    </ul>
+    
+    <ul class="poke-card__data-list">
       <li class="poke-card__data-element"> Types:
         ${typesHtml}
       </li>
