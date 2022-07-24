@@ -32,6 +32,26 @@ class PokemonCard extends Component implements IPokemonCard {
 
       window.location.href = url;
     });
+
+    const addButton = this.element.querySelector(".button");
+    addButton.addEventListener("click", () => {
+      fetch("https://custom-poke-api.herokuapp.com/pokemon", {
+        method: "POST",
+        body: JSON.stringify({
+          pokeId: this.pokemon.id,
+          name: this.pokemon.name,
+          height: this.pokemon.height,
+          weight: this.pokemon.weight,
+          abilities: this.pokemon.abilities,
+          types: this.pokemon.types,
+          sprites: this.pokemon.sprites,
+        }),
+
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }).then((response) => response.json());
+    });
   }
 
   render(): void {
@@ -86,6 +106,8 @@ class PokemonCard extends Component implements IPokemonCard {
         ${abilitiesHtml}
       </li>
     </ul>
+
+    <button type="button" class="button">Add</button>
     `;
 
     this.element.innerHTML = html;
