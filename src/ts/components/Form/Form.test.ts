@@ -6,7 +6,7 @@ describe("Given a component Form", () => {
   const tag = "div";
 
   describe("When instantiated inside a section as a parent", () => {
-    new Form(container);
+    new Form(container, undefined);
     test("Then it should show a div 'full-screen' inside said parent", () => {
       expect(container.querySelector(tag)).not.toBeNull();
       expect(container.querySelector(tag).className).toBe(className);

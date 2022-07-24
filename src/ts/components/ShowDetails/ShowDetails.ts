@@ -10,12 +10,19 @@ class ShowDetails extends Component implements IComponent {
   id = "";
   isEditable: boolean;
 
-  constructor(parent: HTMLElement, isEditable: boolean = false) {
+  constructor(
+    parent: HTMLElement,
+    currentPokemon: CuratedPokemon = undefined,
+    isEditable: boolean = false
+  ) {
     super(parent, "pokemon-list pokemon-list--data", "section");
 
     this.isEditable = isEditable;
-
-    this.getQuery();
+    if (currentPokemon) {
+      this.pokemon = currentPokemon;
+    } else {
+      this.getQuery();
+    }
     this.fetchAndRender();
   }
 
@@ -36,37 +43,41 @@ class ShowDetails extends Component implements IComponent {
 
   fetchAndRender() {
     const getData = async () => {
-      const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${this.id}`
-      );
-      const {
-        id,
-        name,
-        height,
-        weight,
-        abilities,
-        types,
-        sprites: {
-          other: {
-            // eslint-disable-next-line @typescript-eslint/naming-convention
-            "official-artwork": { front_default },
-          },
-        },
-      }: CuratedPokemon = await response.json();
+      if (!this.pokemon) {
+        const response = await fetch(
+          `https://pokeapi.co/api/v2/pokemon/${this.id}`
+        );
 
-      this.pokemon = {
-        id,
-        name,
-        height,
-        weight,
-        abilities,
-        types,
-        sprites: {
-          other: {
-            "official-artwork": { front_default },
+        const {
+          id,
+          name,
+          height,
+          weight,
+          abilities,
+          types,
+          sprites: {
+            other: {
+              // eslint-disable-next-line @typescript-eslint/naming-convention
+              "official-artwork": { front_default },
+            },
           },
-        },
-      };
+        }: CuratedPokemon = await response.json();
+
+        this.pokemon = {
+          id,
+          name,
+          height,
+          weight,
+          abilities,
+          types,
+          sprites: {
+            other: {
+              "official-artwork": { front_default },
+            },
+          },
+        };
+      }
+
       let typesHtml = '<ul class="poke-card__data-container">';
       this.pokemon.types.forEach((type) => {
         this.nameWithCaps(type.type.name);
@@ -149,7 +160,7 @@ class ShowDetails extends Component implements IComponent {
     const editButton = this.element.querySelector(".poke-card__edit");
 
     editButton.addEventListener("click", () => {
-      new Form(document.body);
+      new Form(document.body, this.pokemon);
     });
   }
 }
