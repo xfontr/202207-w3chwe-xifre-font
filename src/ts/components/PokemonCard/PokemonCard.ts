@@ -1,4 +1,3 @@
-import data from "../../data.js";
 import { IPokemonCard } from "../../types/icomponents.js";
 import { CuratedPokemon } from "../../types/interfaces.js";
 import Component from "../Component/Component.js";
@@ -20,12 +19,14 @@ class PokemonCard extends Component implements IPokemonCard {
     this.dataWithCaps = name.charAt(0).toUpperCase() + name.slice(1);
   }
 
-  public async addEventListeners() {
+  addEventListeners() {
+    if (!this.pokemon) return;
     const showDetails = this.element.querySelector(".poke-card__show-details");
-    showDetails.addEventListener("click", async (event) => {
+    showDetails.addEventListener("click", (event) => {
       event.preventDefault();
-      await data.push(this.pokemon);
-      window.location.href = await showDetails.getAttribute("href");
+      sessionStorage.setItem("pokeId", showDetails.getAttribute("id"));
+
+      window.location.href = showDetails.getAttribute("href");
     });
   }
 
@@ -55,7 +56,9 @@ class PokemonCard extends Component implements IPokemonCard {
     const html = `
     <h3 class="poke-card__title">${this.dataWithCaps}</h3>
     <span class="poke-card__id">#${this.pokemon.id}</span>
-    <a href="/pages/show-detail" class="poke-card__show-details">
+    <a href="/pages/show-detail" id="${
+      this.pokemon.id
+    }" class="poke-card__show-details">
       <i class="fa-solid fa-eye"></i>
     </a>
     <img class="poke-card__image" src="${
