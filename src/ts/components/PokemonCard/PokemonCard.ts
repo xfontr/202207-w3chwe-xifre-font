@@ -44,6 +44,10 @@ class PokemonCard extends Component implements IPokemonCard {
     addButton.addEventListener("click", () => {
       if (this.isExternal) {
         this.addPokemon();
+        addButton.className += " success-display";
+        setTimeout(() => {
+          addButton.className = "button poke-card__button";
+        }, 2000);
       } else {
         this.deletePokemon();
       }
@@ -112,6 +116,12 @@ class PokemonCard extends Component implements IPokemonCard {
     }" class="poke-card__show-details">
       <i class="fa-solid fa-eye"></i>
     </a>
+    <button type="button" class="button poke-card__button">${
+      this.isExternal
+        ? '<i class="fa-solid fa-circle-plus"></i>'
+        : '<i class="fa-solid fa-circle-minus"></i>'
+    }</button>
+    
     <img class="poke-card__image" src="${
       this.pokemon.sprites.other["official-artwork"].front_default
     }" alt="Artwork of a ${this.pokemon.name} pokemon"></img>
@@ -133,10 +143,6 @@ class PokemonCard extends Component implements IPokemonCard {
         ${abilitiesHtml}
       </li>
     </ul>
-
-    <button type="button" class="button">${
-      this.isExternal ? "Add" : "Remove"
-    }</button>
     `;
 
     this.element.innerHTML = html;

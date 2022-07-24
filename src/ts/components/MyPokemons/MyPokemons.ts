@@ -13,7 +13,7 @@ class MyPokemons extends Component implements IComponent {
   pageLength = 0;
 
   constructor(parent: HTMLElement) {
-    super(parent, "my-pokemons", "section");
+    super(parent, "pokemon-list", "section");
 
     this.render();
 
@@ -33,10 +33,18 @@ class MyPokemons extends Component implements IComponent {
 
         await new PokemonCard(listElement, dataElement, false);
         this.pageLength += 1;
+
         this.element.querySelector(
-          ".pokemon-list__count"
-        ).textContent = `${this.pageLength} pokemons`;
+          ".card-list__count"
+        ).textContent = `Your pokemons (${this.pageLength})`;
       });
+
+      if (this.pageLength === 0) {
+        const redirectUser = document.createElement("li");
+        redirectUser.innerHTML =
+          'You currently have no pokemons in your Pokedex.<a href="/" style="text-decoration: underline">Go add pokemons with the <i class="fa-solid fa-circle-plus"></i> button.</a>';
+        this.element.querySelector(".card-list").appendChild(redirectUser);
+      }
     };
 
     fetchData();
@@ -44,8 +52,12 @@ class MyPokemons extends Component implements IComponent {
 
   render(): void {
     const html = `
-    <span class="pokemon-list__count">${this.pageLength} pokemons</span>
+    <header class="card-list__header">
+      <span class="card-list__count">Your pokemons (0)</span>
+      <a class="card-list__link" href="/">Main Pokedex</a>
+    </header>
     <ul class="card-list">
+
     </ul>
     `;
 

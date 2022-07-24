@@ -6,7 +6,7 @@ import PokemonCard from "../PokemonCard/PokemonCard.js";
 const apiData = {
   apiUrl: "https://pokeapi.co/api/v2/pokemon",
   offset: `offset=0`,
-  limit: `limit=10`,
+  limit: `limit=12`,
   url() {
     return `${this.apiUrl}?${this.offset}&${this.limit}`;
   },

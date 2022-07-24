@@ -19,11 +19,11 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding-bottom: 1em;
+    padding-bottom: 1.4em;
   }
 
   &__count {
-    color: colors.$pokemon-blue !important;
+    color: colors.$secondary-darker !important;
     font-size: 1.4em;
     font-weight: bold;
   }
@@ -35,7 +35,7 @@
   }
 
   &__link {
-    color: colors.$pokemon-blue !important;
+    color: colors.$secondary !important;
     font-size: 1.4em;
   }
 
