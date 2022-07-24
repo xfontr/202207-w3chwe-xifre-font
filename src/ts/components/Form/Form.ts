@@ -17,15 +17,15 @@ class Form extends Component implements IComponent {
   render(): void {
     const html = `
     <form class="form">
-      <label class="form__label">
+      <label class="form__label">Name: 
         <input class="form__data-name" type="text"></input>
       </label>
 
-      <label class="form__label">
+      <label class="form__label">Height: 
         <input class="form__data-height" type="number"></input>
       </label>
       
-      <label class="form__label">
+      <label class="form__label">Weight: 
         <input class="form__data-weight" type="number"></input>
       </label>
     
@@ -37,6 +37,8 @@ class Form extends Component implements IComponent {
   }
 
   addEventListeners(): void {
+    if (!this.pokemon) return;
+
     const form = this.element.querySelector(".form");
     const { id } = this.pokemon;
 
@@ -49,7 +51,8 @@ class Form extends Component implements IComponent {
     const newWeight: HTMLInputElement =
       document.querySelector(".form__data-weight");
 
-    form.addEventListener("submit", () => {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
       fetch(`https://custom-poke-api.herokuapp.com/pokemon/${id}`, {
         method: "PUT",
         body: JSON.stringify({
