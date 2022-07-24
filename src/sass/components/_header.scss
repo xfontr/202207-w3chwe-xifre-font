@@ -1,12 +1,22 @@
 @use "../variables/colors";
+@use "../variables/breakpoints";
 
 .header {
   &__title {
     font-family: "Pokemon solid", sans-serif;
-    font-size: 5em;
-    color: colors.$primary-brighter;
+    font-size: 6em;
+    color: colors.$pokemon-yellow;
     -webkit-text-stroke: 3px;
-    -webkit-text-stroke-color: colors.$secondary-brighter;
+    -webkit-text-stroke-color: colors.$pokemon-red;
     text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+    line-height: 1.1em;
+    margin-bottom: 1em;
+    z-index: 999;
+
+    @media (max-width: breakpoints.$tablet) {
+      margin: 0;
+      margin-bottom: 0.4em;
+      font-size: 5em;
+    }
   }
 }

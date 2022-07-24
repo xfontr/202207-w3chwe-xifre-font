@@ -1,11 +1,17 @@
 @use "../variables/colors";
 
 .pokemon-list {
-  box-shadow: 7px 7px 10px 7px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 15px 15px 30px 15px rgba(0, 0, 0, 0.1);
   padding: 3em;
   border-radius: 3em;
-  border: solid 5px colors.$secondary;
-  background-color: colors.$primary;
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  // background: linear-gradient(
+  //     rgba(255, 255, 255, 0.9),
+  //     rgba(255, 255, 255, 0.9)
+  //   ),
+  //   url("../img/background-img.jpeg");
+  // background-attachment: fixed;
 
   &__count {
     font-family: "Pokemon solid", sans-serif;
@@ -34,7 +40,7 @@
 
     &-button {
       font-size: 3em;
-      color: colors.$secondary-brighter;
+      color: colors.$pokemon-red;
     }
 
     &-page {
